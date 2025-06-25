@@ -9,6 +9,45 @@ import { FaGift } from "react-icons/fa";
 import { FaMinus } from "react-icons/fa6";
 
 export default function HomePage() {
+  const galleryImages = [
+    { image: "/gallery/g2.webp" },
+    { image: "/gallery/g1.webp" },
+    { image: "/gallery/g3.webp" },
+    { image: "/gallery/g4.webp" },
+    { image: "/gallery/g5.webp" },
+    { image: "/gallery/g6.webp" },
+    { image: "/gallery/g7.webp" },
+    { image: "/gallery/g8.webp" },
+    { image: "/gallery/g9.webp" },
+    { image: "/gallery/g10.webp" },
+    { image: "/gallery/g11.webp" },
+    { image: "/gallery/g12.webp" },
+    { image: "/gallery/g13.webp" },
+    { image: "/gallery/g14.webp" },
+    { image: "/gallery/g15.webp" },
+    { image: "/gallery/g16.webp" },
+    { image: "/gallery/g17.webp" },
+    { image: "/gallery/g18.webp" },
+    { image: "/gallery/g19.webp" },
+    { image: "/gallery/g20.webp" },
+    { image: "/gallery/g21.webp" },
+    { image: "/gallery/g22.webp" },
+    { image: "/gallery/g23.webp" },
+    { image: "/gallery/g24.webp" },
+    { image: "/gallery/g25.webp" },
+    { image: "/gallery/g26.webp" },
+    { image: "/gallery/g27.webp" },
+    { image: "/gallery/g28.webp" },
+
+  ]
+  const stories = [
+    { title: "A RETHINK ON FOOD WASTE", image: "/stories/s1.webp" },
+    { title: "STORY VIBES AND STYLE", image: "/stories/s2.webp" },
+    { title: "BEACH PICNIS", image: "/stories/s3.webp" },
+    { title: "EVERYBODY LOVES AVOCADO", image: "/stories/s4.webp" },
+    { title: "JESSIE AT HOME", image: "/stories/s5.webp" },
+    { title: "FARMER CLARENCE", image: "/stories/s6.webp" },
+  ]
   return (
     <Layout>
       {/* Hero Section */}
@@ -41,39 +80,9 @@ export default function HomePage() {
 
       {/* Philosophy Section */}
       <section className=" p-[1.2rem] lg:p-[4rem] bg-[#e6e6e6]">
-        {/* <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-cyan-400 p-8 text-white">
-              <h2 className="text-3xl font-bold mb-4">
-                Our Philosophy Is Simple: Let Your Food Be Your Medicine, Not Your Demise.
-              </h2>
-            </div>
-            <div className="space-y-4 text-gray-700">
-              <p>
-                We have the best fresh juice and smoothie bar in the Cayman Islands. We pride ourselves on using only
-                the freshest ingredients and creating delicious, nutritious drinks that will leave you feeling energized
-                and satisfied.
-              </p>
-              <p>
-                Our menu features a wide variety of fresh juices, smoothies, and healthy snacks. We also offer a
-                selection of hot and cold beverages, including coffee, tea, and specialty drinks.
-              </p>
-              <p>
-                Whether you're looking for a quick breakfast on the go, a post-workout refuel, or a healthy lunch
-                option, we have something for everyone.
-              </p>
-              <Link
-                href="/menu"
-                className="inline-block bg-cyan-400 text-white px-6 py-3 rounded hover:bg-cyan-500 transition-colors"
-              >
-                View Menu
-              </Link>
-            </div>
-          </div>
-        </div> */}
 
         <div className="grid md:grid-cols-2 grid-cols-1 mt-[-6rem] md:mt-[-9rem]  relative z-10 ">
-          <div className="col-span-1 h-[39.938rem] text-white bg-[#27d4f2] py-[1rem] px-[1.5rem]">
+          <div className="col-span-1 h-[39.938rem] text-white bg-[#27d4f2] lg:p-[2rem] py-[1rem] px-[1.5rem]">
             <h2 className="text-3xl leading-11 font-bold mb-4 text-[1.375rem] md:text-[1.875rem] lg:text-[2.75rem]">
               Our Philosophy Is Simple: Let Your Food Be Your Medicine, Not Your Demise.
             </h2>
@@ -109,20 +118,39 @@ export default function HomePage() {
       </section>
 
       {/* Gift Certificate Section */}
-      <section className="py-16 bg-[#fed160]">
-        <div className="gift  grid grid-cols-2">
+      <section className="py-16 ">
+        <div className="gift  grid grid-cols-1 md:grid-cols-2">
 
-          <div className="col-span-1">
-            <div className="icon text-center text-[black]">
-              <span><FaGift/> </span>
+          <div className="col-span-1 h-[25.198rem] text-center py-[5rem]  bg-[#fed160]">
+
+            <div className="icon   text-[black]">
+              <span className=" w-[5rem]  inline"><FaGift className="mx-auto" size={70} /> </span>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
+
+            <div className="mt-3 w-full">
+              <h2 className="lg:text-[1.75rem]  text-[1.125rem] lg:tracking-[0rem] tracking-[0.25rem] font-bold">PURCHASE A GIFT CERTIFICATE</h2>
+            </div>
+            <div className="mt-3">
+              <p className="text-[1.25rem] font-normal italic text-[#000306]">Amounts: $25 / $50 / $100</p>
+            </div>
+            <div className="text-[#181709] mt-3">
+              <p>Call our store to find out more: +1 345 949 2012</p>
+            </div>
+
 
           </div>
-          
-          <div></div>
+
+          <div className="video h-[25.198rem]">
+            <video
+              className="w-full h-full object-cover"
+              src="/images/vid.mp4"
+              autoPlay
+              muted
+              loop
+              controls
+            />
+
+          </div>
 
         </div>
 
@@ -130,8 +158,8 @@ export default function HomePage() {
       </section>
 
       {/* Location Section */}
-      <section className="py-16 bg-cyan-400 text-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
+      <section className="p-[2.5rem] bg-cyan-400 text-white">
+        {/* <div className="max-w-7xl mx-auto px-4 text-center">
           <h3 className="text-3xl font-bold mb-8">WE'RE HERE!</h3>
           <p className="text-lg mb-8 max-w-3xl mx-auto">
             We are located in the heart of Camana Bay, Grand Cayman. Come visit us for the freshest juices, smoothies,
@@ -148,7 +176,50 @@ export default function HomePage() {
               View Menu
             </button>
           </div>
+        </div> */}
+        <div className="lg:w-[74%] mx-auto">
+
+          <div className="flex justify-center items-center  ">
+            <div className="relative w-[12rem] h-[8rem] flex items-center justify-center">
+              {/* Center Rectangle */}
+              <div className="absolute inset-0 border-2 border-white" />
+
+              {/* Left Offset Rectangle */}
+              <div className="absolute left-[-20px] top-0 w-full h-full border-2 border-white" />
+
+              {/* Right Offset Rectangle */}
+              <div className="absolute right-[-20px] top-0 w-full h-full border-2 border-white" />
+
+              {/* Text in the center */}
+              <h1 className="text-white text-lg font-bold tracking-widest z-10">
+                THE MENU
+              </h1>
+            </div>
+          </div>
+          <div className="text-center box-border text-white text-[1.5rem] mt-[2.5rem] font-medium" >
+            <p className="">We offer cold pressed 100% fruit and vegetable juices, nutritious all natural smoothies featuring a select range of superfoods with no added sugar or ice. Some of the best espresso & cold brew coffee on island, quality loose leaf teas and house made kombucha are also key features.</p>
+
+            <p className="mt-[3rem] box-border">Our menu offers a select range of breakfast items featuring local eggs, salads, wraps (including gluten free house made veggie flax wraps), grilled sandwiches and house baked goods all made with real, nutrient-rich ingredients.</p>
+
+
+          </div>
+
+          <div className="flex flex-wrap mt-[3rem] justify-center gap-4">
+            <button className="bg-white text-gray-800 px-6 py-3 rounded-4xl font-semibold hover:text-gray-400 transition-colors">
+              View drink Menu
+            </button>
+            <button className="bg-[#ffd900] rounded-4xl text-black px-6 py-3  font-semibold hover:text-gray-400 transition-colors">
+              Order Now
+            </button>
+            <button className="bg-white text-gray-800 px-6 py-3 rounded-4xl font-semibold hover:text-gray-400 transition-colors">
+              View Food Menu
+            </button>
+          </div>
+
+
+
         </div>
+
       </section>
 
       {/* Gallery Section */}
@@ -156,59 +227,62 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <Image
-              src="/placeholder.svg?height=60&width=60"
+              src="/images/radio.webp"
               alt="Logo"
-              width={60}
-              height={60}
+              width={200}
+              height={200}
               className="mx-auto mb-4"
             />
             <h3 className="text-2xl font-bold text-gray-800">LISTEN TO JESSIE'S PLAYLISTS</h3>
             <p className="text-gray-600">ON SOUNDCLOUD</p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-12">
-            {Array.from({ length: 24 }).map((_, i) => (
-              <div key={i} className="aspect-square bg-gray-200 rounded overflow-hidden">
-                <Image
-                  src={`/placeholder.svg?height=150&width=150`}
-                  alt={`Gallery ${i + 1}`}
-                  width={150}
-                  height={150}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+          <div className="grid grid-cols-1 lg:grid-cols-4  md:grid-cols-3   gap-4 mb-12">
+            {galleryImages.map((image, i) => {
+              return (
+                <div key={i} className="aspect-square bg-gray-200 rounded overflow-hidden">
+                  <Image
+                    src={image.image}
+                    alt={`Gallery ${i + 1}`}
+                    width={150}
+                    height={150}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )
+
+            })}
+
           </div>
 
-          <div className="text-center mb-12">
+          <div className=" ">
             <h3 className="text-2xl font-bold text-gray-800 mb-8">JESSIE'S JUICE BAR STORIES</h3>
-            <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { title: "THINK ON ZERO WASTE", subtitle: "LIFESTYLE" },
-                { title: "STORY VIBE & STYLE", subtitle: "LIFESTYLE" },
-                { title: "BEACH PICNIC", subtitle: "LIFESTYLE" },
-                { title: "EVERYBODY LOVES SMOOTHIES", subtitle: "LIFESTYLE" },
-              ].map((story, i) => (
-                <div key={i} className="bg-gray-200 p-6 rounded text-center">
-                  <Image
-                    src={`/placeholder.svg?height=200&width=250`}
-                    alt={story.title}
-                    width={250}
-                    height={200}
-                    className="w-full mb-4 rounded"
-                  />
-                  <h4 className="font-bold text-gray-800">{story.title}</h4>
-                  <p className="text-sm text-gray-600">{story.subtitle}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-4  md:grid-cols-2 gap-6">
+              {stories.map((story, i) => (
+                <div
+                  key={i}
+                  className="relative p-6 h-[17rem] rounded overflow-hidden bg-cover bg-center flex items-end"
+                  style={{ backgroundImage: `url(${story.image})` }}
+                >
+                  {/* Black overlay */}
+                  <div className="absolute inset-0 bg-black/35 z-0"></div>
+
+                  {/* Content */}
+                  <div className="relative z-10 flex flex-col justify-start h-[10rem]">
+                    <h4 className="font-semibold text-[1rem] text-white">Article</h4>
+                    <p className="text-[1.75rem] tracking-[0.25rem] font-bold text-white">{story.title}</p>
+                  </div>
                 </div>
               ))}
             </div>
+
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="mt-5 ">
+        {/* <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-bold text-gray-800 mb-6">CAMANA BAY</h3>
@@ -240,6 +314,62 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div> */}
+
+
+        <div className="grid grid-cols-2 gap-6">
+
+          <div className="img col-span-1">
+            <Image
+              src="/images/uftr-img.webp"
+              alt="Logo"
+              width={200}
+              height={200}
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+
+          <div className="content col-span-1">
+            <h2 className="text-[1.563rem] font-semibold tracking-[0.25rem] leading-[2.25rem]">CAMANA BAY</h2>
+
+            <h4 className="flex gap-4">
+              <p className="">icon</p>
+              <p className="text-[1rem] font-bold leading-[1rem]">Market St, Camana Bay, Grand Cayman
+                (near Anytime Fitness, north end of Market Street)</p>
+            </h4>
+
+
+             <h4 className="flex gap-4">
+              <p>icon</p>
+              <p className="text-[1rem] font-bold ">+1 345 949 2012</p>
+            </h4>
+
+
+             <h4 className="flex gap-4">
+              <p>icon</p>
+              <p className="text-[1rem] font-bold ">hello jessiesjuicebar@gmail.com</p>
+            </h4>
+
+            <h1>CAMANA BAY HOURS</h1>
+
+            <p>7:30 am – 4:00 pm Monday – Saturday</p>
+            <p>7:30 am – 4:00 pm Monday – Saturday</p>
+
+          
+
+
+            
+
+
+
+
+
+          </div>
+
+
+
+
         </div>
       </section>
     </Layout>

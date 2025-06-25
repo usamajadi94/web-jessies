@@ -105,7 +105,7 @@ export default function Layout({ children }) {
             <main className="">{children}</main>
 
             <footer className="bg-gray-800 text-white py-8 mt-16">
-                <div className="max-w-7xl mx-auto px-4 text-center">
+                <div className="max-w-7xl mx-auto px-[3rem] ">
                     <p>&copy; 2025 Jessie's Juice Bar.</p>
                 </div>
             </footer>
