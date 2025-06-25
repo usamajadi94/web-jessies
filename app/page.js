@@ -3,31 +3,45 @@ import Link from "next/link"
 import Image from "next/image"
 // import { Gift, Play } from "lucide-react"
 import Layout from "./components/layout"
+import { FaPlay } from "react-icons/fa"
+import { FaGift } from "react-icons/fa";
+
+import { FaMinus } from "react-icons/fa6";
 
 export default function HomePage() {
   return (
     <Layout>
       {/* Hero Section */}
       <section
-        className="relative h-screen bg-cover bg-center"
-        
+        className="relative md:h-[60rem] h-[50rem] bg-[url('/images/background-image.webp')] bg-cover bg-center "
       >
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40 z-0"></div>
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center justify-center h-[50rem]">
           <div className="text-center text-white">
-            <h1 className="text-6xl font-bold mb-4">JESSIE'S JUICE BAR</h1>
+            <h3 className="text-[1.375rem] leading-[1.875rem] font-medium ">
+              Fresh. Wholesome. Quality.
+            </h3>
+
+            <h1 className="text-[4.125rem] tracking-[0.438rem] leading-[4.438rem] font-semibold mt-[2.5rem]">
+              JESSIE'S JUICE BAR
+            </h1>
+
             <div className="flex justify-center">
-              <button className="bg-white bg-opacity-20 rounded-full p-4 hover:bg-opacity-30 transition-all">
-                {/* <Play className="w-8 h-8 text-white" /> */}
+              <button className="bg-[#19d8ff] mt-[2.5rem] flex items-center justify-center w-[5.125rem] h-[5.125rem] p-[1.625rem] rounded-full">
+                <FaPlay size={90} />
               </button>
             </div>
           </div>
         </div>
       </section>
 
+
       {/* Philosophy Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className=" p-[1.2rem] lg:p-[4rem] bg-[#e6e6e6]">
+        {/* <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-cyan-400 p-8 text-white">
               <h2 className="text-3xl font-bold mb-4">
@@ -56,29 +70,63 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
+        </div> */}
+
+        <div className="grid md:grid-cols-2 grid-cols-1 mt-[-6rem] md:mt-[-9rem]  relative z-10 ">
+          <div className="col-span-1 h-[39.938rem] text-white bg-[#27d4f2] py-[1rem] px-[1.5rem]">
+            <h2 className="text-3xl leading-11 font-bold mb-4 text-[1.375rem] md:text-[1.875rem] lg:text-[2.75rem]">
+              Our Philosophy Is Simple: Let Your Food Be Your Medicine, Not Your Demise.
+            </h2>
+            <p className="box-border leading-[1.875rem]  text-[1.1rem] font-normal">
+              We are passionate about food and believe not only should it be nourishing and make you feel great, but taste amazing too. Reflected in the menu is our desire to serve wholesome foods with minimal processing for maximum benefit in a quest for optimum health, and ultimately, optimum living. Despite all the advancements over the past decades, our greatest achievement may be going full circle, getting back to the basics and enjoying the simple things in life.</p>
+          </div>
+          <div className="phis-image  col-span-1 h-[39.938rem] bg-[url('/images/phis-image.webp')] bg-cover bg-center">
+
+
+          </div>
+
+          <div className="fruit-image h-[39.938rem] col-span-1 bg-[url('/images/fruit-image.webp')] bg-cover bg-center"></div>
+
+          <div className="md:py-[3rem]  p-[1.5rem] md:px-[3.5rem] h-[39.938rem] bg-white col-span-1">
+            <p className="leading-[1.875] text-[1.1rem] font-normal text-[#2a2a2a] ">We like to think that our menu is inclusive – in that the majority of people, regardless of their unique dietary requirements, choices or tastes, will find something for them. Our mission is to make the healthy choice an easy one and show people that clean, healthy eating is simple, colourful and unforgettable. We support local farmers and focus heavily on reducing our impact on the local environment by opting for minimal, eco packaging, reusing where possible and encouraging our patrons to do the same.</p>
+
+            <div className="w-[11.25rem] text-white font-medium mt-[3rem] h-[3.375rem]">
+
+              <a className=" flex items-center justify-around py-[0.938rem] px-[1.875rem] rounded-4xl   bg-[#19d8ff]   ">
+                <span className="inline"><FaMinus /></span>
+                <span>View Menu</span>
+
+              </a>
+            </div>
+
+
+          </div>
+
+
+
         </div>
+
       </section>
 
       {/* Gift Certificate Section */}
-      <section className="py-16 bg-yellow-400">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="text-center">
-              {/* <Gift className="w-16 h-16 mx-auto mb-4 text-gray-800" /> */}
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">PURCHASE A GIFT CERTIFICATE</h3>
-              <p className="text-gray-700">Available for $50, $100, $150</p>
+      <section className="py-16 bg-[#fed160]">
+        <div className="gift  grid grid-cols-2">
+
+          <div className="col-span-1">
+            <div className="icon text-center text-[black]">
+              <span><FaGift/> </span>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <Image
-                src="/placeholder.svg?height=200&width=300"
-                alt="Gift Certificate"
-                width={300}
-                height={200}
-                className="w-full rounded"
-              />
-            </div>
+            <div></div>
+            <div></div>
+            <div></div>
+
           </div>
+          
+          <div></div>
+
         </div>
+
+
       </section>
 
       {/* Location Section */}
