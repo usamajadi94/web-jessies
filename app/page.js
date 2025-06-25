@@ -223,62 +223,68 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <Image
-              src="/images/radio.webp"
-              alt="Logo"
-              width={200}
-              height={200}
-              className="mx-auto mb-4"
-            />
-            <h3 className="text-2xl font-bold text-gray-800">LISTEN TO JESSIE'S PLAYLISTS</h3>
-            <p className="text-gray-600">ON SOUNDCLOUD</p>
-          </div>
+<section className="py-16">
+  <div className="max-w-8xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <Image
+        src="/images/radio.webp"
+        alt="Logo"
+        width={150}
+        height={150}
+        className="mx-auto mb-4"
+      />
+      <h3 className="text-2xl font-bold text-gray-800">LISTEN TO JESSIE'S PLAYLISTS</h3>
+      <p className="text-gray-600">ON SOUNDCLOUD</p>
+    </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4  md:grid-cols-3   gap-4 mb-12">
-            {galleryImages.map((image, i) => {
-              return (
-                <div key={i} className="aspect-square bg-gray-200 rounded overflow-hidden">
-                  <Image
-                    src={image.image}
-                    alt={`Gallery ${i + 1}`}
-                    width={150}
-                    height={150}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              )
+<div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
+  {galleryImages.map((image, i) => {
+    return (
+      <div key={i} className="h-[16rem] bg-gray-200 rounded overflow-hidden">
+        <Image
+          src={image.image}
+          alt={`Gallery ${i + 1}`}
+          width={300}
+          height={200}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    );
+  })}
+</div>
 
-            })}
 
-          </div>
-
-          <div className=" ">
-            <h3 className="text-2xl font-bold text-gray-800 mb-8">JESSIE'S JUICE BAR STORIES</h3>
-            <div className="grid grid-cols-1 lg:grid-cols-4  md:grid-cols-2 gap-6">
-              {stories.map((story, i) => (
-                <div
-                  key={i}
-                  className="relative p-6 h-[17rem] rounded overflow-hidden bg-cover bg-center flex items-end"
-                  style={{ backgroundImage: `url(${story.image})` }}
-                >
-                  {/* Black overlay */}
-                  <div className="absolute inset-0 bg-black/35 z-0"></div>
-
-                  {/* Content */}
-                  <div className="relative z-10 flex flex-col justify-start h-[10rem]">
-                    <h4 className="font-semibold text-[1rem] text-white">Article</h4>
-                    <p className="text-[1.75rem] tracking-[0.25rem] font-bold text-white">{story.title}</p>
-                  </div>
-                </div>
-              ))}
+    <div>
+      <h3 className="text-2xl font-bold text-gray-800 mb-8">JESSIE'S JUICE BAR STORIES</h3>
+      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
+        {stories.map((story, i) => (
+          <div
+            key={i}
+            className="relative p-6 h-[17rem] rounded overflow-hidden bg-cover bg-center flex items-end"
+            style={{ backgroundImage: `url(${story.image})` }}
+          >
+            <div className="absolute inset-0 bg-black/35 z-0"></div>
+            <div className="relative z-10 flex flex-col justify-start h-[10rem]">
+              <h4 className="font-semibold text-[1rem] text-white">Article</h4>
+              <p className="text-[1.75rem] tracking-[0.25rem] font-bold text-white">
+                {story.title}
+              </p>
             </div>
-
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* ✅ Full-Width Section with Centered Text */}
+<section className="w-full bg-gray-100 py-12">
+  <div className="text-center">
+    <h2 className="text-3xl font-bold text-gray-800">This is a Full Width Section</h2>
+    <p className="text-gray-600 mt-2">Text is centered and the section spans 100% width.</p>
+  </div>
+</section>
+
 
       {/* Contact Section */}
       <section className="mt-5 ">
