@@ -1,14 +1,20 @@
-
+"use client"
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 // import { Gift, Play } from "lucide-react"
-import Layout from "./components/layout"
-import { FaPlay } from "react-icons/fa"
+import Layout from "./components/homeLayout"
+import { FaPlay, FaTimes } from "react-icons/fa"
 import { FaGift } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { IoLocationSharp } from "react-icons/io5";
+import 'animate.css';
 
 import { FaMinus } from "react-icons/fa6";
 
 export default function HomePage() {
+  const [showVideo, setShowVideo] = useState(false);
   const galleryImages = [
     { image: "/gallery/g2.webp" },
     { image: "/gallery/g1.webp" },
@@ -69,13 +75,35 @@ export default function HomePage() {
             </h1>
 
             <div className="flex justify-center">
-              <button className="bg-[#19d8ff] mt-[2.5rem] flex items-center justify-center w-[5.125rem] h-[5.125rem] p-[1.625rem] rounded-full">
+              <button className="bg-[#19d8ff] mt-[2.5rem] flex items-center justify-center w-[5.125rem] h-[5.125rem] p-[1.625rem] rounded-full" onClick={() => setShowVideo(true)}>
                 <FaPlay size={90} />
+
               </button>
             </div>
           </div>
         </div>
       </section>
+      {showVideo && (
+        <div className="fixed inset-0 bg-[black]/70  bg-opacity-10 z-50 flex items-center justify-center">
+          <div className="relative w-[70%]  h-[95%]">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowVideo(false)}
+              className="absolute top-4 right-4 text-white text-3xl z-50"
+            >
+              <FaTimes />
+            </button>
+
+            {/* Video */}
+            <video
+              src="/images/vid.mp4" // ⬅️ Replace with your actual path
+              controls
+              autoPlay
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      )}
 
 
       {/* Philosophy Section */}
@@ -223,67 +251,59 @@ export default function HomePage() {
       </section>
 
       {/* Gallery Section */}
-<section className="py-16">
-  <div className="max-w-8xl mx-auto px-4">
-    <div className="text-center mb-12">
-      <Image
-        src="/images/radio.webp"
-        alt="Logo"
-        width={150}
-        height={150}
-        className="mx-auto mb-4"
-      />
-      <h3 className="text-2xl font-bold text-gray-800">LISTEN TO JESSIE'S PLAYLISTS</h3>
-      <p className="text-gray-600">ON SOUNDCLOUD</p>
-    </div>
+      <section className="py-12">
+        <div className="max-w-8xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <Image
+              src="/images/radio.webp"
+              alt="Logo"
+              width={200}
+              height={200}
+              className="mx-auto mb-4"
+            />
+            <h3 className="text-[1.8rem] font-bold text-[black] tracking-[.15rem]">LISTEN TO JESSIE'S PLAYLISTS <br /> ON SOUNDCLOUD</h3>
+            {/* <p className="text-gray-600">ON SOUNDCLOUD</p> */}
+          </div>
 
-<div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
-  {galleryImages.map((image, i) => {
-    return (
-      <div key={i} className="h-[16rem] bg-gray-200 rounded overflow-hidden">
-        <Image
-          src={image.image}
-          alt={`Gallery ${i + 1}`}
-          width={300}
-          height={200}
-          className="w-full h-full object-cover"
-        />
-      </div>
-    );
-  })}
-</div>
+          <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
+            {galleryImages.map((image, i) => {
+              return (
+                <div key={i} className="h-[16rem] animate__animated animate__zoomIn  bg-gray-200 rounded overflow-hidden">
+                  <Image
+                    src={image.image}
+                    alt={`Gallery ${i + 1}`}
+                    width={300}
+                    height={200}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              );
+            })}
+          </div>
 
 
-    <div>
-      <h3 className="text-2xl font-bold text-gray-800 mb-8">JESSIE'S JUICE BAR STORIES</h3>
-      <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
-        {stories.map((story, i) => (
-          <div
-            key={i}
-            className="relative p-6 h-[17rem] rounded overflow-hidden bg-cover bg-center flex items-end"
-            style={{ backgroundImage: `url(${story.image})` }}
-          >
-            <div className="absolute inset-0 bg-black/35 z-0"></div>
-            <div className="relative z-10 flex flex-col justify-start h-[10rem]">
-              <h4 className="font-semibold text-[1rem] text-white">Article</h4>
-              <p className="text-[1.75rem] tracking-[0.25rem] font-bold text-white">
-                {story.title}
-              </p>
+          <div>
+            <h3 className="text-[1.8rem] font-bold tracking-[.15rem] text-center text-black my-8">JESSIE'S JUICE BAR <span className="text-[#19d8ff]">STORIES</span></h3>
+            <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
+              {stories.map((story, i) => (
+                <div
+                  key={i}
+                  className="relative p-6 h-[17rem] rounded overflow-hidden bg-cover bg-center flex items-end"
+                  style={{ backgroundImage: `url(${story.image})` }}
+                >
+                  <div className="absolute inset-0 bg-black/35 z-0"></div>
+                  <div className="relative z-10 flex flex-col justify-start h-[10rem]">
+                    <h4 className="font-semibold text-[1rem] text-white">Article</h4>
+                    <p className="text-[1.75rem] tracking-[0.25rem] font-bold text-white">
+                      {story.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
-      </div>
-    </div>
-  </div>
-</section>
-
-{/* ✅ Full-Width Section with Centered Text */}
-<section className="w-full bg-gray-100 py-12">
-  <div className="text-center">
-    <h2 className="text-3xl font-bold text-gray-800">This is a Full Width Section</h2>
-    <p className="text-gray-600 mt-2">Text is centered and the section spans 100% width.</p>
-  </div>
-</section>
+        </div>
+      </section>
 
 
       {/* Contact Section */}
@@ -323,7 +343,7 @@ export default function HomePage() {
         </div> */}
 
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
 
           <div className="img col-span-1">
             <Image
@@ -331,41 +351,71 @@ export default function HomePage() {
               alt="Logo"
               width={200}
               height={200}
-              className="object-cover w-full h-full"
+              className="object-cover w-full "
             />
           </div>
 
 
-          <div className="content col-span-1">
+          <div className="content col-span-1 px-5">
             <h2 className="text-[1.563rem] font-semibold tracking-[0.25rem] leading-[2.25rem]">CAMANA BAY</h2>
 
-            <h4 className="flex gap-4">
-              <p className="">icon</p>
-              <p className="text-[1rem] font-bold leading-[1rem]">Market St, Camana Bay, Grand Cayman
+            <h4 className="flex mt-5 font-bold leading-[1.4rem] items-center gap-4">
+              <p className=""><IoLocationSharp className="text-[#19d8ff] text-[1.7rem]" /></p>
+              <p className="text-[1rem] font-bold ">Market St, Camana Bay, Grand Cayman <br />
                 (near Anytime Fitness, north end of Market Street)</p>
             </h4>
 
+            <div className="w-[14rem] mt-5 ms-[2.5rem] text-white font-medium  h-[3.375rem]">
 
-             <h4 className="flex gap-4">
-              <p>icon</p>
-              <p className="text-[1rem] font-bold ">+1 345 949 2012</p>
+              <a className=" flex  items-center justify-around py-[0.938rem] px-[1.875rem] rounded-4xl   bg-[#19d8ff]   ">
+                <span className="inline"><FaMinus /></span>
+                <span className="tracking-[.15rem]">Get Directions</span>
+
+              </a>
+            </div>
+
+
+            <h4 className="flex font-bold mt-2 leading-[2.7rem] items-center gap-4">
+              <p><FaPhoneAlt className="text-[#19d8ff] text-[1.7rem]" /></p>
+              <p className="text-[1.1rem] font-bold ">+1 345 949 2012</p>
             </h4>
 
 
-             <h4 className="flex gap-4">
-              <p>icon</p>
-              <p className="text-[1rem] font-bold ">hello jessiesjuicebar@gmail.com</p>
+            <h4 className="flex items-center   font-bold leading-[2.7rem] gap-4">
+              <p><MdEmail className="text-[#19d8ff] text-[1.8rem]" /></p>
+
+              <p className="text-[1.1rem] font-bold ">hello jessiesjuicebar@gmail.com</p>
             </h4>
 
-            <h1>CAMANA BAY HOURS</h1>
+            <h1 className="text-[1.563rem] mt-3 font-bold tracking-[0.25rem] leading-[2.25rem]">CAMANA BAY HOURS</h1>
 
-            <p>7:30 am – 4:00 pm Monday – Saturday</p>
-            <p>7:30 am – 4:00 pm Monday – Saturday</p>
-
-          
+            <p className="mb-[0.063rem] mt-4 font-normal">7:30 am – 4:00 pm Monday – Saturday</p>
+            <p className="mt-3">7:30 am – 4:00 pm Monday – Saturday</p>
 
 
-            
+            <div className="w-full h-[400px] mt-5  overflow-hidden ">
+
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1927717.0969852754!2d-81.377941!3d19.322662!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f2587ac03756aaf%3A0x5dcf46282d38b9d!2sJessie&#39;s%20Juice%20Bar%20Cafe%2C%20Camana%20Bay!5e0!3m2!1sen!2sus!4v1750927923740!5m2!1sen!2sus" className="w-[100%] h-[75%]" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            {/* 
+             <iframe
+                src="https://maps.app.goo.gl/EJkj65H5b5uxT1Fv5" // 🔁 replace with your location embed
+                width="82%"
+                height="70%"
+                
+                className=" "
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe> */}
+
+
+
+
+
+
+
 
 
 
