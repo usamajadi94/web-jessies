@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Layout from '../components/layout'
+import Layout from '../components/homeLayout'
 import "../globals.css"
 import { Roboto_Condensed } from 'next/font/google'
 

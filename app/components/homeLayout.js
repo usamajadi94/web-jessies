@@ -1,18 +1,23 @@
 'use client'
 import Link from "next/link"
 import { Facebook, Instagram } from "lucide-react"
-import { FaBars } from "react-icons/fa";
-import { FaPlay } from "react-icons/fa";
+import { FaBars, FaTimes } from 'react-icons/fa';
+
 
 
 import { FaPinterest } from "react-icons/fa";
 // import jessesLogo from '@/public/images/'
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Dropdown from "./dropdown";
+import HoverDropdown from "./dropdown";
 
 
 export default function Layout({ children }) {
     const [scrolled, setScrolled] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -64,39 +69,67 @@ export default function Layout({ children }) {
                 <div className=" mx-auto ">
                     <div className="flex h-[7.025rem] justify-between items-center ">
 
-                        <nav className="flex justify-between items-center w-full xl:mx-[3.896rem] lg:mx-[3.5rem] mx-3">
+                      <nav className="relative w-full z-50">
+      {/* Navbar Main */}
+      <div className="flex justify-between items-center xl:mx-[3.896rem] lg:mx-[3.5rem] mx-3 h-[5.775rem]">
+        {/* Left menu (desktop) */}
+        <div className="serif text-[0.813rem] py-[0.625rem] lg:flex hidden font-semibold tracking-[0.1rem] text-dark w-[32.5%] justify-around items-center">
+          <Link href="/about">ABOUT</Link>
+          <Link href="/gift-certificates">GIFT CERTIFICATES</Link>
+          <Link href="/menu">MENU</Link>
+        </div>
 
-                            <div className="serif text-[0.813rem] py-[0.625rem] lg:flex hidden font-semibold tracking-[0.1rem] text-dark m-0 w-[32.5%]  justify-around items-center">
-                                <Link href="/about" className=" hover:text-gray-900  ">ABOUT</Link>
-                                <Link href="/gift-certificates" className=" hover:text-gray-900 ">GIFT CERTIFICATES</Link>
-                                <Link href="/menu" className=" hover:text-gray-900 ">MENU</Link>
-                            </div>
-                            <div className="m-0 h-[5.775rem] flex  items-center justify-center  w-[32.5%] ">
-                                <Link href="/" className="flex flex-col lg:items-center items-start">
-                                    <Image
-                                        src="/images/jesses-logo.webp"
-                                        alt="Jessie's Logo"
-                                        width={129}
-                                        height={40}
-                                        className={`w-[8.05rem] ${!scrolled &&"invert brightness-0" }`}
-                                    />
+        {/* Logo */}
+        <div className="w-[32.5%] flex justify-center items-center">
+          <Link href="/">
+            <Image
+              src="/images/jesses-logo.webp"
+              alt="Jessie's Logo"
+              width={129}
+              height={40}
+              className={`md:w-[8.05rem] w-[6rem]`}
+            />
+          </Link>
+        </div>
+
+        {/* Right menu (desktop) */}
+        <div className="serif text-[0.813rem] py-[0.625rem] font-semibold tracking-[0.188rem] text-dark w-[32.5%] lg:flex hidden justify-around items-center">
+          <Link href="/gallery">GALLERY</Link>
+          <Link href="/contact">CONTACT</Link>
+          <p className="">
+          <HoverDropdown />
+          </p>
+        </div>
+
+        {/* Hamburger / Cross Icon */}
+        <div className="lg:hidden block z-50" onClick={toggleMenu}>
+          {menuOpen ? (
+            <FaTimes className="text-[1.8rem] text-dark" />
+          ) : (
+            <FaBars className="text-[1.8rem] text-dark" />
+          )}
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      
+    </nav>
+    <div
+  className={`fixed top-[9rem] left-0 w-full bg-white text-black z-40 transform transition-transform duration-300 ease-in-out ${
+    menuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'
+  }`}
+>
+  <div className="flex flex-col items-center py-6 gap-5 text-[0.9rem] font-semibold tracking-widest">
+    <Link href="/about" onClick={toggleMenu}>ABOUT</Link>
+    <Link href="/gift-certificates" onClick={toggleMenu}>GIFT CERTIFICATES</Link>
+    <Link href="/menu" onClick={toggleMenu}>MENU</Link>
+    <Link href="/gallery" onClick={toggleMenu}>GALLERY</Link>
+    <Link href="/contact" onClick={toggleMenu}>CONTACT</Link>
+    <Link href="/cart" onClick={toggleMenu}>SHOP</Link>
+  </div>
+</div>
 
 
-                                </Link>
-                            </div>
-
-
-                            <div className="serif text-[0.813rem] py-[0.625rem]  font-semibold tracking-[0.188rem] text-dark m-0 w-[32.5%] lg:flex hidden justify-around items-center ">
-                                <Link href="/gallery" className=" hover:text-gray-900 ">GALLERY</Link>
-                                <Link href="/contact" className=" 
-                                 hover:text-gray-900 ">CONTACT</Link>
-                                <Link href="/cart" className=" hover:text-gray-900  ">SHOP</Link>
-                            </div>
-                            <div className="ham lg:hidden block">
-                                <FaBars />
-
-                            </div>
-                        </nav>
                     </div>
                 </div>
             </header>
