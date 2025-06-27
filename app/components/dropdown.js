@@ -1,21 +1,31 @@
 'use client';
 import Link from 'next/link';
-// import { Link } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
-export default function HoverDropdown() {
+export default function HoverDropdown({ scrolled }) {
   const [isOpen, setIsOpen] = useState(false);
+  const timeoutRef = useRef(null);
+
+  const handleMouseEnter = () => {
+    clearTimeout(timeoutRef.current);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    // delay the close slightly to allow time to move into the dropdown
+    timeoutRef.current = setTimeout(() => setIsOpen(false), 150);
+  };
 
   return (
     <div
       className="relative inline-block text-left"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Button */}
       <button
         type="button"
-        className="text-white   font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center"
+        className={`${scrolled ? "text-black" : "text-white"} font-semibold tracking-[0.188rem] rounded-lg text-sm px-5 py-2.5 inline-flex items-center`}
       >
         SHOP
         <svg
@@ -37,24 +47,23 @@ export default function HoverDropdown() {
 
       {/* Dropdown Menu */}
       {isOpen && (
-        <div className="absolute mt-2 z-10 text-black  divide-y divide-gray-100 rounded-lg shadow-sm w-36 bg-white">
-          <ul className="py-2 text-sm text-black ">
+        <div className="absolute mt-2 z-10 text-black divide-y divide-gray-100 rounded-lg shadow-sm w-36 bg-white">
+          <ul className="py-2 text-sm text-black">
             <li>
               <Link
-                href="checkout"
-                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                href="/checkout"
+                className="block px-4 py-2 hover:bg-gray-100"
               >
                 Checkout
               </Link>
             </li>
-           
             <li>
-              <a
-                href="#"
-                className="block px-4 py-2 hover-text-[white] hover:bg-[gray]"
+              <Link
+                href="/myprofile"
+                className="block px-4 py-2 hover:bg-gray-100"
               >
                 My Profile
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

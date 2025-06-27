@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Layout from '../components/homeLayout'
+import Layout from '../components/checkoutLayout'
 import "../globals.css"
 import { Roboto_Condensed } from 'next/font/google'
 
@@ -24,15 +24,8 @@ export default async function MenuPage() {
   }
 
   return (
-    <Layout>
-      <section className="relative h-screen bg-cover bg-center bg-[url('/images/menu-hero.jpg')]">
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10 flex items-center justify-center h-full">
-          <div className="text-center text-white">
-            <h1 className="text-6xl font-bold mb-4">Menu</h1>
-          </div>
-        </div>
-      </section>
+    <Layout headName={"Menu"}>
+      
 
       <section className="w-full py-16 bg-white">
         <div className="w-full">

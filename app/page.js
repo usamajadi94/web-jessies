@@ -11,7 +11,9 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import 'animate.css';
 
+
 import { FaMinus } from "react-icons/fa6";
+// import useInView from "./components/useInView"
 
 export default function HomePage() {
   const [showVideo, setShowVideo] = useState(false);
@@ -266,19 +268,20 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 gap-6">
-            {galleryImages.map((image, i) => {
-              return (
-                <div key={i} className="h-[16rem] animate__animated animate__zoomIn  bg-gray-200 rounded overflow-hidden">
-                  <Image
-                    src={image.image}
-                    alt={`Gallery ${i + 1}`}
-                    width={300}
-                    height={200}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              );
-            })}
+           {galleryImages.map((image, i) => {
+  return (
+    <div key={i} className="h-[16rem] animate__animated animate__zoomIn  bg-gray-200 rounded overflow-hidden">
+      <Image
+        src={image.image}
+        alt={`Gallery ${i + 1}`}
+        width={300}
+        height={200}
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+})}
+
           </div>
 
 

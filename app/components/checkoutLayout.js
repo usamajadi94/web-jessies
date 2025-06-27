@@ -13,7 +13,7 @@ import Dropdown from "./dropdown";
 import HoverDropdown from "./dropdown";
 
 
-export default function Layout({ children }) {
+export default function Layout({ children ,headName }) {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -62,7 +62,7 @@ export default function Layout({ children }) {
             </div>
 
             {/* Fixed Header below Top Bar */}
-            <section className="relative md:h-[30rem] h-[20rem]  bg-[url('/images/cart-head-image.webp')] bg-cover bg-center flex items-center justify-center">
+            <section className="relative md:h-[24rem] h-[20rem]  bg-[url('/images/cart-head-image.webp')] bg-cover bg-center flex items-center justify-center">
                 {/* Fixed Header */}
                  <div className="absolute inset-0 bg-black/40 z-0"></div>
                 <header
@@ -98,7 +98,7 @@ export default function Layout({ children }) {
                                         <Link href="/gallery">GALLERY</Link>
                                         <Link href="/contact">CONTACT</Link>
                                         <p className="">
-                                            <HoverDropdown />
+                                            <HoverDropdown  scrolled ={scrolled}/>
                                         </p>
                                     </div>
 
@@ -135,13 +135,13 @@ export default function Layout({ children }) {
 
                 {/* Cart Title - Centered */}
                 <div className="text-white z-10 mt-10">
-                    <h1 className="text-4xl md:text-5xl font-bold">Cart</h1>
+                    <h1 className="text-4xl md:text-5xl font-bold">{headName}</h1>
                 </div>
             </section>
 
 
             {/* Margin top to avoid overlap */}
-            <main className="">{children}</main>
+            <main className="md:px-[4rem] px-[2rem] pt-[2rem]">{children}</main>
 
             <footer className="bg-gray-800 text-white py-8 mt-16">
                 <div className="max-w-7xl mx-auto px-[3rem] ">

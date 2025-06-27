@@ -97,7 +97,7 @@ export default function Layout({ children }) {
           <Link href="/gallery">GALLERY</Link>
           <Link href="/contact">CONTACT</Link>
           <p className="">
-          <HoverDropdown />
+          <HoverDropdown scrolled ={scrolled} />
           </p>
         </div>
 
